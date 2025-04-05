@@ -6,11 +6,13 @@
 /*   By: mberila <mberila@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/19 13:47:22 by mberila           #+#    #+#             */
-/*   Updated: 2025/03/19 14:20:10 by mberila          ###   ########.fr       */
+/*   Updated: 2025/04/04 14:59:43 by mberila          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int main()
+#include "./philo.h"
+
+int main(int ac, char *av[])
 {
 	return (0);
 }
