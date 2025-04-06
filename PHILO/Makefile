@@ -3,15 +3,15 @@ NAME		=		philo
 CC			=		cc
 FLAGS		=		-Wall -Wextra -Werror
 
-SRCS		=		PHILO/philo.c
-OBJS		=		$(SRCS:.c = .o)
+SRCS		=		philo.c parsing.c 
+OBJS		=		$(SRCS:.c=.o)
 
 all: $(NAME)
 
 $(NAME): $(OBJS)
 	$(CC) $(FLAGS) $(OBJS) -o $(NAME)
 
-PHILO/%.o: PHILO/%.c includes/philo.h
+philo/%.o: philo/%.c includes/philo.h
 	$(CC) $(FLAGS) -c $< -o $@ 
 
 clean:
