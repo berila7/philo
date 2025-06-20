@@ -6,7 +6,7 @@
 /*   By: berila <berila@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/19 12:55:40 by berila            #+#    #+#             */
-/*   Updated: 2025/06/19 13:06:54 by berila           ###   ########.fr       */
+/*   Updated: 2025/06/20 16:35:07 by berila           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,8 +43,6 @@ int	ft_atoi(const char *str)
 int	ft_isdigit(int c)
 {
 	if (c >= '0' && c <= '9' )
-	{
 		return (1);
-	}
 	return (0);
 }
