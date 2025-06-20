@@ -6,19 +6,16 @@
 /*   By: berila <berila@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/19 14:03:11 by berila            #+#    #+#             */
-/*   Updated: 2025/06/20 18:19:51 by berila           ###   ########.fr       */
+/*   Updated: 2025/06/20 18:45:59 by berila           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
 
-int	init_philosophers(t_table *table)
+void	init_philosophers(t_table *table)
 {
 	int	i;
 
-	table->philos = malloc(sizeof(t_philo) * table->philo_nbr);
-	if (!table->philos)
-		return (0);
 	i = 0;
 	while (i < table->philo_nbr)
 	{
@@ -30,7 +27,6 @@ int	init_philosophers(t_table *table)
 		table->philos[i].table = table;
 		i++;
 	}
-	return (1);
 }
 
 void	create_threads(t_table *table)
@@ -50,7 +46,9 @@ void	create_threads(t_table *table)
 int	init_table(t_table *table)
 {
 	int	i;
-	if (!init_philosophers(table))
+
+	table->philos = malloc(sizeof(t_philo) * table->philo_nbr);
+	if (!table->philos)
 		return (0);
 	table->forks = malloc(sizeof(pthread_mutex_t) * table->philo_nbr);
 	if (!table->forks)
@@ -71,5 +69,10 @@ int	init_table(t_table *table)
 		}
 		i++;
 	}
+	if (pthread_mutex_init(&table->print, NULL) != 0)
+		return (0);
+	if (pthread_mutex_init(&table->death_check, NULL) != 0)
+		return (0);
+	init_philosophers(table);
 	return (1);	
 }

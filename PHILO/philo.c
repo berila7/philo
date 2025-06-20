@@ -6,7 +6,7 @@
 /*   By: berila <berila@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/19 13:47:22 by mberila           #+#    #+#             */
-/*   Updated: 2025/06/20 18:02:09 by berila           ###   ########.fr       */
+/*   Updated: 2025/06/20 18:41:37 by berila           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ int main(int ac, char *av[])
     table->start_time = get_time();
     table->simulation_running = 1;
     create_threads(table);
-    if (pthread_create(&monitor, NULL, monitor_routine, &table) != 0)
+    if (pthread_create(&monitor, NULL, monitor_routine, table) != 0)
         clean_exit("Monitor thread creation failed", table);
     pthread_join(monitor, NULL);
     i = 0;
