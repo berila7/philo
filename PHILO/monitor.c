@@ -6,7 +6,7 @@
 /*   By: berila <berila@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/20 17:29:09 by berila            #+#    #+#             */
-/*   Updated: 2025/06/20 18:06:51 by berila           ###   ########.fr       */
+/*   Updated: 2025/06/20 20:23:13 by berila           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,12 +39,30 @@ int	death_check(t_table *table)
 void	*monitor_routine(void *arg)
 {
 	t_table	*table;
+	int		i;
+	int		all_ate_enough;
 
 	table = (t_table *)arg;
 	while (table->simulation_running)
 	{
 		if(death_check(table))
 			break ;
+		if (table->must_eat_count != -1)
+		{
+			all_ate_enough = 1;
+			i = 0;
+			while (i < table->philo_nbr)
+			{
+				if (table->philos[i].meals_eaten < table->must_eat_count)
+				{
+					all_ate_enough = 0;
+					break;
+				}
+				i++;
+			}
+			if (all_ate_enough)
+				table->simulation_running = 0;
+		}
 		usleep(1000);
 	}
 	return (NULL);
