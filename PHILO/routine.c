@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   routine.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: berila <berila@student.42.fr>              +#+  +:+       +#+        */
+/*   By: mberila <mberila@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/20 15:46:21 by berila            #+#    #+#             */
-/*   Updated: 2025/06/20 19:51:04 by berila           ###   ########.fr       */
+/*   Updated: 2025/06/21 11:50:04 by mberila          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,16 @@ void	printf_status(t_philo *philo, char *status)
 	pthread_mutex_unlock(&philo->table->print);
 }
 
+int	simulation_is_running(t_philo *philo)
+{
+	int running;
+
+	pthread_mutex_lock(&philo->table->death_check);
+	running = philo->table->simulation_running;
+	pthread_mutex_unlock(&philo->table->death_check);
+	return (running);
+}
+
 void	*philo_routine(void *arg)
 {
 	t_philo *philo;
@@ -36,7 +46,7 @@ void	*philo_routine(void *arg)
 		ft_usleep(philo->table->time_to_die);
 		return (NULL);
 	}
-	while (philo->table->simulation_running)
+	while (simulation_is_running(philo))
 	{
 		think(philo);
 		take_forks(philo);

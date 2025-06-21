@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   routine_utils.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: berila <berila@student.42.fr>              +#+  +:+       +#+        */
+/*   By: mberila <mberila@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/20 17:11:55 by berila            #+#    #+#             */
-/*   Updated: 2025/06/20 18:06:23 by berila           ###   ########.fr       */
+/*   Updated: 2025/06/21 11:45:56 by mberila          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,8 +28,10 @@ void	take_forks(t_philo *philo)
 void	eat(t_philo *philo)
 {
 	printf_status(philo, "is eating");
+	pthread_mutex_lock(&philo->table->death_check);
 	philo->last_meal_time = get_time();
 	philo->meals_eaten++;
+	pthread_mutex_unlock(&philo->table->death_check);
 	ft_usleep(philo->table->time_to_eat);
 }
 
