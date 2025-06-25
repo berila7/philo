@@ -6,7 +6,7 @@
 /*   By: mberila <mberila@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/20 17:11:55 by berila            #+#    #+#             */
-/*   Updated: 2025/06/21 11:45:56 by mberila          ###   ########.fr       */
+/*   Updated: 2025/06/25 18:41:46 by mberila          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,10 +19,20 @@ void	think(t_philo *philo)
 
 void	take_forks(t_philo *philo)
 {
-	pthread_mutex_lock(philo->left_fork);
-	printf_status(philo, "has taken the left fork");
-	pthread_mutex_lock(philo->right_fork);
-	printf_status(philo, "has taken the right fork");
+	if (philo->id % 2 == 0)
+	{
+		pthread_mutex_lock(philo->left_fork);
+		printf_status(philo, "has taken a fork");
+		pthread_mutex_lock(philo->right_fork);
+		printf_status(philo, "has taken a fork");
+	}
+	else
+	{
+		pthread_mutex_lock(philo->right_fork);
+		printf_status(philo, "has taken a fork");
+		pthread_mutex_lock(philo->left_fork);
+		printf_status(philo, "has taken a fork");
+	}
 }
 
 void	eat(t_philo *philo)
@@ -37,12 +47,12 @@ void	eat(t_philo *philo)
 
 void	put_forks(t_philo *philo)
 {
-	pthread_mutex_unlock(philo->left_fork);	
-	pthread_mutex_unlock(philo->right_fork);	
+	pthread_mutex_unlock(philo->left_fork);
+	pthread_mutex_unlock(philo->right_fork);
 }
 
 void	sleep_time(t_philo *philo)
 {
 	printf_status(philo, "is sleeping");
-	ft_usleep(philo->table->time_to_sleep);	
+	ft_usleep(philo->table->time_to_sleep);
 }

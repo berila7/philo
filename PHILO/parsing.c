@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parsing.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: berila <berila@student.42.fr>              +#+  +:+       +#+        */
+/*   By: mberila <mberila@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/05 10:56:22 by mberila           #+#    #+#             */
-/*   Updated: 2025/06/20 17:45:14 by berila           ###   ########.fr       */
+/*   Updated: 2025/06/25 18:38:03 by mberila          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,11 +17,11 @@ static int	is_digit(char *str)
 	int	i;
 
 	i = 0;
-	if(!str)
+	if (!str)
 		return (0);
 	while (str[i])
 	{
-		if(str[i] >= '0' && str[i] <= '9')
+		if (str[i] >= '0' && str[i] <= '9')
 			i++;
 		else
 			return (0);
@@ -31,9 +31,9 @@ static int	is_digit(char *str)
 
 static long	ft_atol(char *str)
 {
-	int	i;
-	long result;
-	int sign;
+	int		i;
+	long	result;
+	int		sign;
 
 	i = 0;
 	result = 0;
@@ -70,7 +70,6 @@ static int	within_limits(char *str)
 int	parse_arguments(int ac, char *av[], t_table *table)
 {
 	int	i;
-	
 
 	i = 1;
 	while (i < ac)

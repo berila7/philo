@@ -3,48 +3,36 @@
 /*                                                        :::      ::::::::   */
 /*   philo.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: berila <berila@student.42.fr>              +#+  +:+       +#+        */
+/*   By: mberila <mberila@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/17 17:14:07 by mberila           #+#    #+#             */
-/*   Updated: 2025/06/20 17:58:49 by berila           ###   ########.fr       */
+/*   Updated: 2025/06/25 21:01:03 by mberila          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef PHILO_H
 # define PHILO_H
 
-#include <pthread.h>
-#include <unistd.h>
-#include <stdio.h>
-#include <string.h>
-#include <stdlib.h>
-#include <sys/time.h>
-#include <limits.h>
+# include <pthread.h>
+# include <unistd.h>
+# include <stdio.h>
+# include <string.h>
+# include <stdlib.h>
+# include <sys/time.h>
+# include <limits.h>
 
-# define RED "\033[0;31m"
-# define GREEN "\033[0;32m"
-# define YELLOW "\033[0;33m"
-# define BLUE "\033[0;34m"
-# define MAGENTA "\033[0;35m"
-# define CYAN "\033[0;36m"
-# define RESET "\033[0m"
-
-typedef struct s_table t_table;
-typedef struct s_philo t_philo;
-/*
-- TABLE 
-- ARGS: ./philo 5 800 200 200 [5]
-*/
+typedef struct s_table	t_table;
+typedef struct s_philo	t_philo;
 
 struct s_philo
 {
-	int			id;
-	int			meals_eaten;
-	long 		last_meal_time;
-	pthread_t	thread;
+	int				id;
+	int				meals_eaten;
+	long			last_meal_time;
+	pthread_t		thread;
 	pthread_mutex_t	*left_fork;
 	pthread_mutex_t	*right_fork;
-	t_table		*table;
+	t_table			*table;
 };
 
 struct s_table
@@ -80,4 +68,5 @@ void	eat(t_philo *philo);
 void	put_forks(t_philo *philo);
 void	sleep_time(t_philo *philo);
 void	*monitor_routine(void *arg);
+int		simulation_is_running(t_table *table);
 #endif

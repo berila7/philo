@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   free.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: berila <berila@student.42.fr>              +#+  +:+       +#+        */
+/*   By: mberila <mberila@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/19 13:05:24 by berila            #+#    #+#             */
-/*   Updated: 2025/06/20 18:09:32 by berila           ###   ########.fr       */
+/*   Updated: 2025/06/25 18:36:24 by mberila          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,10 +29,10 @@ void	free_table(t_table *table)
 			free(table->forks);
 		}
 		if (table->philos)
-        {
-            pthread_mutex_destroy(&table->print);
-            pthread_mutex_destroy(&table->death_check);
-        }
+		{
+			pthread_mutex_destroy(&table->print);
+			pthread_mutex_destroy(&table->death_check);
+		}
 		if (table->philos)
 			free(table->philos);
 		free(table);
