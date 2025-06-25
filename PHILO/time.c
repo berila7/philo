@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   time.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: berila <berila@student.42.fr>              +#+  +:+       +#+        */
+/*   By: mberila <mberila@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/20 16:49:49 by berila            #+#    #+#             */
-/*   Updated: 2025/06/20 16:53:32 by berila           ###   ########.fr       */
+/*   Updated: 2025/06/25 21:15:11 by mberila          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,12 +28,3 @@ void	ft_usleep(long time)
 	while (get_time() - start_time < time)
 		usleep(100);
 }
-
-// int main(void)
-// {
-// 	long current_time;
-
-// 	current_time = get_time();
-// 	printf("Current time in milliseconds: %ld\n", current_time);
-// 	return (0);
-// }
