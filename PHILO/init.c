@@ -6,7 +6,7 @@
 /*   By: mberila <mberila@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/25 21:43:26 by mberila           #+#    #+#             */
-/*   Updated: 2025/06/26 12:23:34 by mberila          ###   ########.fr       */
+/*   Updated: 2025/06/26 12:37:13 by mberila          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,7 @@ void	create_threads(t_table *table)
 		i++;
 	}
 }
-		
+
 int	ini_forks(t_table *table)
 {
 	int	i;
