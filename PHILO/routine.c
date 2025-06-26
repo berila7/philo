@@ -6,7 +6,7 @@
 /*   By: mberila <mberila@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/25 21:44:40 by mberila           #+#    #+#             */
-/*   Updated: 2025/06/25 21:44:42 by mberila          ###   ########.fr       */
+/*   Updated: 2025/06/26 12:50:41 by mberila          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,8 +46,6 @@ void	*philo_routine(void *arg)
 		ft_usleep(philo->table->time_to_die);
 		return (NULL);
 	}
-	if (philo->id % 2 == 0)
-		ft_usleep(100);
 	while (simulation_is_running(philo->table))
 	{
 		take_forks(philo);
