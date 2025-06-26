@@ -6,7 +6,7 @@
 /*   By: mberila <mberila@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/25 21:43:34 by mberila           #+#    #+#             */
-/*   Updated: 2025/06/25 21:43:37 by mberila          ###   ########.fr       */
+/*   Updated: 2025/06/26 10:22:59 by mberila          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,7 +76,7 @@ void	*monitor_routine(void *arg)
 				pthread_mutex_unlock(&table->death_check);
 			}
 		}
-		usleep(500);
+		usleep(1000);
 	}
 	return (NULL);
 }
