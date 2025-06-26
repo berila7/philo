@@ -6,7 +6,7 @@
 /*   By: mberila <mberila@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/25 21:44:20 by mberila           #+#    #+#             */
-/*   Updated: 2025/06/26 10:56:05 by mberila          ###   ########.fr       */
+/*   Updated: 2025/06/26 12:22:28 by mberila          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,7 @@ struct s_philo
 
 struct s_table
 {
+	pthread_t		monitor;
 	int				philo_nbr;
 	int				time_to_die;
 	int				time_to_eat;

@@ -6,7 +6,7 @@
 /*   By: mberila <mberila@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/25 21:43:58 by mberila           #+#    #+#             */
-/*   Updated: 2025/06/25 21:44:00 by mberila          ###   ########.fr       */
+/*   Updated: 2025/06/26 12:24:29 by mberila          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,10 +31,21 @@ void	join_threads(t_table *table)
 	}
 }
 
+void	create_monitor(t_table *table)
+{
+	if (pthread_create(&table->monitor, NULL, monitor_routine, table) != 0)
+	{
+		pthread_mutex_lock(&table->death_check);
+		table->simulation_running = 0;
+		pthread_mutex_unlock(&table->death_check);
+		join_threads(table);
+		clean_exit("Monitor thread creation failed", table);
+	}
+}
+
 int	main(int ac, char *av[])
 {
 	t_table		*table;
-	pthread_t	monitor;
 
 	table = malloc(sizeof(t_table));
 	if (!table)
@@ -49,9 +60,8 @@ int	main(int ac, char *av[])
 	table->start_time = get_time();
 	table->simulation_running = 1;
 	create_threads(table);
-	if (pthread_create(&monitor, NULL, monitor_routine, table) != 0)
-		clean_exit("Monitor thread creation failed", table);
-	pthread_join(monitor, NULL);
+	create_monitor(table);
+	pthread_join(table->monitor, NULL);
 	join_threads(table);
 	free_table(table);
 	return (0);
